@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <div id="parent" class="w3-display-container">
+        <div id="clients-table" class="w3-center w3-display-topmiddle w3-margin-top">
+            <table>
+                <caption>Project Table</caption>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Client</th>
+                    <th>Project Status</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for project in projects %}
+                    <tr data-record-id="{{ project.id }}">
+                        <td><input class="project-name-field" type="text" value="{{ project.project_name }}" /></td>
+                        <td>
+                            <input type="text" class="project-client-ref" value="{{ project.client_reference }}" />
+                        </td>
+                        <td>
+                            <select>
+                                {% for status in project_statuses %}
+                                    <option value="{{ status }}">{{ status }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <button data-record-id="{{ project.id }}" class="save-button w3-button w3-green">Save</button>
+                            <button data-record-id="{{ project.id }}" class="delete-button w3-button w3-red">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <button class="add-button w3-button w3-blue w3-margin-top">Add</button>
+        </div>
+    </div>
+
+    <script>
+        var csrfToken = "{{ csrf_token }}";
+    </script>
+    <script src="{% static 'js/projects.js' %}"></script>
+</body>
+
+</html>

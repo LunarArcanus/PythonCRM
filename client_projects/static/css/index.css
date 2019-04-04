@@ -1,0 +1,34 @@
+html, body, #parent {
+    width: 100%;
+    height: 100%;
+}
+
+#clients-table table, th, td {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+#clients-table table {
+    border-collapse: collapse;
+}
+
+#login-table {
+    border-collapse: collapse;
+}
+
+table > caption {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+table > tbody > tr > th {
+    background-color: grey;
+}
+
+#logout-button {
+    top: 0;
+    right: 0;
+    position: absolute;
+}
