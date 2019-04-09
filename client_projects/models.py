@@ -3,10 +3,10 @@
 from django.db import models
 
 class Client(models.Model):
-    project_reference = models.ForeignKey("Project",
-    null = True,
-    blank = True, 
-    on_delete = models.SET_NULL)
+    # project_reference = models.OneToOneField("Project",
+    # null = True,
+    # blank = True, 
+    # on_delete = models.SET_NULL)
     client_name = models.CharField(max_length = 50)
     contact_person = models.CharField(max_length = 50)
     contact_number = models.CharField(max_length = 15)
@@ -15,7 +15,7 @@ class Client(models.Model):
         return self.client_name
 
 class Project(models.Model):
-    client_reference = models.OneToOneField(Client, 
+    client_reference = models.ForeignKey(Client, 
         null = True,
         blank = True,
         on_delete = models.SET_NULL)

@@ -32,12 +32,16 @@
                         <td>
                             <select>
                                 {% for status in project_statuses %}
-                                    <option value="{{ status }}">{{ status }}</option>
+                                    <option value="{{ status }}"
+                                        {% if status == project.project_status %}
+                                            selected
+                                        {% endif %}
+                                    >{{ status }}</option>
                                 {% endfor %}
                             </select>
                         </td>
                         <td>
-                            <button data-record-id="{{ project.id }}" class="save-button w3-button w3-green">Save</button>
+                            <button data-record-id="{{ project.id }}" class="save-button w3-button w3-green w3-margin-bottom">Save</button>
                             <button data-record-id="{{ project.id }}" class="delete-button w3-button w3-red">Delete</button>
                         </td>
                     </tr>

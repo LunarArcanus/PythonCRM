@@ -32,3 +32,7 @@ table > tbody > tr > th {
     right: 0;
     position: absolute;
 }
+
+.save-button, .delete-button {
+    width: 100%;
+}
